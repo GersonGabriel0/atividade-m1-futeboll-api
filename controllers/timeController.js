@@ -8,11 +8,11 @@ function timeController() {}
 timeController.prototype.post = async (req, res) => {
     try {
         var body = req.body;
-        if (body.name && body.birthday) {
+        if (body.nome && body.patrimonio) {
             await new repository().create(body)
             res.status(201).send('Registro criado com sucesso!')
         } else {
-            res.status(400).send('Erro! parametros necessários.')
+            res.status(400).send('Erro contem parametros faltando.')
         }
     } catch (error) {
         res.status(500).send(error)
@@ -22,7 +22,7 @@ timeController.prototype.post = async (req, res) => {
 timeController.prototype.put = async (req, res) => {
     try {
         await new repository().update(req.params.id, req.body)
-        res.status(202).send('Registro atualizado com sucesso!')
+        res.status(202).send('Registro atualizado com sucess!!')
     } catch (error) {
         res.status(500).send(error)
     }
@@ -43,7 +43,7 @@ timeController.prototype.get = async (req, res) => {
             times.push(time)
         })
         if (times.length == 0) {
-            res.status(404).send('Não há registros!')
+            res.status(404).send('Não há registros Disponiveis')
         } else {
             res.status(200).send(times)
         }
